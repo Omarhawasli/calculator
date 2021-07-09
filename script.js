@@ -1,13 +1,13 @@
-let getHistory = () => {
+const getHistory = () => {
     return document.getElementById("history-value").innerText;
 }
-let printHistroy = (num) => {
+const printHistroy = (num) => {
     return document.getElementById("history-value").innerText=num;
 }
-let getOutput = () => {
+const getOutput = () => {
     return document.getElementById("output-value").innerText;
 }
-let printOutput = (num) => {
+const printOutput = (num) => {
     if(num === ""){
         document.getElementById("output-value").innerText=(num);
     }else{
@@ -16,10 +16,7 @@ let printOutput = (num) => {
     }
 }
 
-let getFormattedNumber = (num) => {
-    if(num === "-"){
-        return ""
-    }
+const getFormattedNumber = (num) => {
     let number = Number(num)
     let value = number.toLocaleString("en")
     return value
@@ -35,7 +32,7 @@ console.log("operator", typeof(operator));
 
 document.querySelectorAll('.operator').forEach(function(item) {
     item.addEventListener('click',function(){
-        switch (this.id) {
+        switch(this.id) {
             case "clear":
                 printHistroy("");
                 printOutput("");
@@ -46,32 +43,32 @@ document.querySelectorAll('.operator').forEach(function(item) {
                     output = output.substr(0, output.length-1);
                     printOutput(output)}
                 break;
-            case "+":
+            case "+": 
                 var output = getOutput()
                 var history = getHistory()
-                printHistroy(`${output} +`)
+                printHistroy(`${output} + ${history}`)
                     printOutput("")
+                    console.log("plus");
               break;
             case "-":
                 var output = getOutput()
                 var history = getHistory()
-                printHistroy(`${output} -`)
+                printHistroy(`${output} - ${history}`)
                 printOutput("")
             break;
             case "*":
                 var output = getOutput()
                 var history = getHistory()
-                printHistroy(`${output} *`)
+                printHistroy(`${output} * ${history}`)
                 printOutput("")
                break;
                case "/":
-
-                printHistroy(`${output} /`)
+                printHistroy(`${output} / ${history}`)
                 printOutput("")
                break;
             case "=":
-             var history = getHistory();
-             var output = getOutput();
+                var history = getHistory();
+                var output = getOutput();
              if(output.length && history.length){
                  printHistroy(new String (` ${history} ${output}`))
                  printOutput(eval(history + output))

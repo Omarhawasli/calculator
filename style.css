@@ -2,17 +2,23 @@ body {
     font-family: sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+h4{
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+}
+
 #container {
     width: 1000px;
     height: 550px;
-    background-color: darkblue;
+    background-color: rgb(44, 110, 107);
     margin: 10px auto;
 }
 
 #calculator {
     width: 285px;
     height: 520px;
-    background-color: darkcyan;
+    background-color: rgb(33, 128, 128);
     margin: 0 auto;
     top: 20px;
     position: relative;
@@ -72,25 +78,37 @@ body {
 
 button:nth-child(4){
     font-size: 20px;
-    background-color: rgb(233, 140, 18);
+    background-color: rgb(206, 151, 80);
 }
 
 button:nth-child(8){
     font-size: 20px;
-    background-color: rgb(32, 132, 179);
+    background-color: rgb(65, 141, 177);
 }
 
 button:nth-child(12){
     font-size: 20px;
-    background-color: rgb(27, 230, 20);
-}
-
-button:nth-child(20){
-    font-size: 20px;
-    background-color: rgb(39, 68, 197);
+    background-color: rgb(58, 155, 54);
 }
 
 button:nth-child(16){
     font-size: 20px;
-    background-color: rgb(197, 76, 39);
+    background-color: rgb(131, 69, 50);
 }
+
+button:nth-child(17){
+    font-size: 20px;
+    background-color: rgb(33, 128, 128);
+}
+
+button:nth-child(19){
+    font-size: 20px;
+    background-color: rgb(33, 128, 128);
+}
+
+button:nth-child(20){
+    font-size: 20px;
+    background-color: rgb(64, 79, 148);
+}
+
+

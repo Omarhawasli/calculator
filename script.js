@@ -12,11 +12,13 @@ const printOutput = (num) => {
         document.getElementById("output-value").innerText = (num);
     }else{
         document.getElementById("output-value").innerText = getFormattedNumber(num);
-
     }
 }
 
 const getFormattedNumber = (num) => {
+    if(num === "-"){
+        return ""
+    }
     let number = Number(num)
     let value = number.toLocaleString("en")
     return value
@@ -27,9 +29,8 @@ const reverseNumberFormat = (num) => {
     return Number(num.replace(/,/g,''))
 }
 
-const operator = document.getElementsByClassName("operator")
-console.log("operator", typeof(operator));
-
+// const operator = document.getElementsByClassName("operator")
+// console.log("operator", typeof(operator));
 
 const number = document.querySelectorAll(".number")
 number.forEach(item => {
@@ -44,17 +45,17 @@ number.forEach(item => {
 
 document.querySelectorAll('.operator').forEach(function(item) {
     item.addEventListener('click',function(){
-        const output = getOutput();
-        const history = getHistory();
+        let output = getOutput();
+        let history = getHistory();
         switch(this.id) {
             case "clear":
                 printHistroy("");
                 printOutput("");
               break;
             case "backspace":
-                const outputS = reverseNumberFormat(getOutput()).toString()
+                var num = reverseNumberFormat(getOutput()).toString()
                 if(output){
-                    output = outputS.substr(0, output.length-1);
+                    output = num.substr(0, output.length-1);
                     printOutput(output)}
                 break;
             case "+": 
@@ -90,8 +91,6 @@ document.querySelectorAll('.operator').forEach(function(item) {
           }
     })
 });
-
-
 
 
 // document.querySelectorAll('.operator').forEach(item => {

@@ -14,13 +14,12 @@ const printOutput = (num) => {
         document.getElementById("output-value").innerText = getFormattedNumber(num);
     }
 }
-
 const getFormattedNumber = (num) => {
     if(num === "-"){
         return ""
     }
     let number = Number(num)
-    let value = number.toLocaleString("en")
+    let value = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(number)
     return value
 }
 printOutput("")
@@ -58,7 +57,7 @@ document.querySelectorAll('.operator').forEach(function(item) {
                     output = num.substr(0, output.length-1);
                     printOutput(output)}
                 break;
-            case "+": 
+            case "+":                     
                 if(output){
                     printHistroy(`${output} + ${history}`)
                     printOutput("")
@@ -78,12 +77,14 @@ document.querySelectorAll('.operator').forEach(function(item) {
                 }
                break;
                case "/":
-                printHistroy(`${output} / ${history}`)
-                printOutput("")
+                   if(output){
+                        printHistroy(`${output} / ${history}`)
+                        printOutput("")
+                   }
                break;
             case "=":
              if(output.length && history.length){
-                 printHistroy(new String (` ${history} ${output}`))
+                 printHistroy(new String(`${output} ${history}`))
                  printOutput(eval(history + output))
             }
             printHistroy("")
@@ -91,20 +92,3 @@ document.querySelectorAll('.operator').forEach(function(item) {
           }
     })
 });
-
-
-// document.querySelectorAll('.operator').forEach(item => {
-//     item.addEventListener('click', () => { 
-//         console.log("clicked");
-//         if(this.id === "clear"){
-//             console.log("clear");
-//             printHistroy("");
-//             printOutput("")
-//         } if(this.id === "backspace"){
-//             var output = reverseNumberFormat(getOutput()).toString()
-//             if(output){
-//                 output = output.substr(0, output.length-1);
-//             printOutput(output)}
-//         }
-//     })
-// })

@@ -28,8 +28,6 @@ const reverseNumberFormat = (num) => {
     return Number(num.replace(/,/g,''))
 }
 
-// const operator = document.getElementsByClassName("operator")
-// console.log("operator", typeof(operator));
 
 const number = document.querySelectorAll(".number")
 number.forEach(item => {

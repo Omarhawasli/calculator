@@ -8,14 +8,14 @@ const getOutput = () => {
     return document.getElementById("output-value").innerText;
 }
 const printOutput = (num) => {
-    if(num === ""){
+    if(num == ""){
         document.getElementById("output-value").innerText = (num);
     }else{
         document.getElementById("output-value").innerText = getFormattedNumber(num);
     }
 }
 const getFormattedNumber = (num) => {
-    if(num === "-"){
+    if(num == "-"){
         return ""
     }
     let number = Number(num)
@@ -24,7 +24,7 @@ const getFormattedNumber = (num) => {
 }
 printOutput("")
 
-const reverseNumberFormat = (num) => {
+const numberFormat = (num) => {
     return Number(num.replace(/,/g,''))
 }
 
@@ -32,7 +32,7 @@ const reverseNumberFormat = (num) => {
 const number = document.querySelectorAll(".number")
 number.forEach(item => {
     item.addEventListener('click',function(){
-        let output = reverseNumberFormat(getOutput())
+        let output = numberFormat(getOutput())
         if(output !== NaN){
             output = output + this.id
             printOutput(output)
@@ -50,7 +50,7 @@ document.querySelectorAll('.operator').forEach(function(item) {
                 printOutput("");
               break;
             case "backspace":
-                var num = reverseNumberFormat(getOutput()).toString()
+                let num = numberFormat(getOutput()).toString()
                 if(output){
                     output = num.substr(0, output.length-1);
                     printOutput(output)}
@@ -80,6 +80,11 @@ document.querySelectorAll('.operator').forEach(function(item) {
                         printOutput("")
                    }
                break;
+               case "%":
+                if(output){
+                    printHistroy(`${output}`)
+                }
+            break;
             case "=":
              if(output.length && history.length){
                  printHistroy(new String(`${output} ${history}`))
